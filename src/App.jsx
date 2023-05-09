@@ -1,32 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
+import contactsData from './contacts.json';
+import React, { useState } from 'react';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [contacts, setContacts] = useState(contactsData.slice(0,5))
+  
+
+  const handleClick = () => {
+    const restOfContacts = contactsData.filter(element => !contacts.includes(element))
+
+   const randomContact = Math.random() * restOfContacts.length
+  }
+
+
+  const imgStyle = {
+    height: '100px',
+  }
 
   return (
+    
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1> IronContacts</h1>
+      <button onClick={handleClick}>Add Random Contact</button>
+      <table>
+        <thead>
+          <tr>
+            <td>Picture</td>
+            <td>Name</td>
+            <td>Popularity</td>
+            <td>Won an Oscar</td>
+            <td> Won an Emmy</td>
+          </tr>
+        </thead>
+        <tr>
+          <td><img style={imgStyle} src={contacts[0].pictureUrl} alt='' /></td>
+          <td>{contacts[0].name}</td>
+          <td>{contacts[0].popularity}</td>
+          <td>{contacts[0].wonOscar ? '🏆' : ':('}</td>
+          <td>{contacts[0].wonEmmy ? '🏆' : ':('}</td>
+        </tr>
+        <tr>
+          <td><img style={imgStyle} src={contacts[1].pictureUrl} alt='' /></td>
+          <td>{contacts[1].name}</td>
+          <td>{contacts[1].popularity}</td>
+          <td>{contacts[1].wonOscar ? '🏆' : ':('}</td>
+          <td>{contacts[1].wonEmmy ? '🏆' : ':('}</td>
+        </tr>
+        <tr>
+          <td><img style={imgStyle} src={contacts[2].pictureUrl} alt='' /></td>
+          <td>{contacts[2].name}</td>
+          <td>{contacts[2].popularity}</td>
+          <td>{contacts[2].wonOscar ? '🏆' : ':('}</td>
+          <td>{contacts[2].wonEmmy ? '🏆' : ':('}</td>
+        </tr>
+        <tr>
+          <td><img style={imgStyle} src={contacts[3].pictureUrl} alt='' /></td>
+          <td>{contacts[3].name}</td>
+          <td>{contacts[3].popularity}</td>
+          <td>{contacts[3].wonOscar ? '🏆' : ':('}</td>
+          <td>{contacts[3].wonEmmy ? '🏆' : ':('}</td>
+        </tr>
+        <tr>
+          <td><img style={imgStyle} src={contacts[4].pictureUrl} alt='' /></td>
+          <td>{contacts[4].name}</td>
+          <td>{contacts[4].popularity}</td>
+          <td>{contacts[4].wonOscar ? '🏆' : ':('}</td>
+          <td>{contacts[4].wonEmmy ? '🏆' : ':('}</td>
+        </tr>
+      </table>
     </div>
   )
 }
